@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { app } = require('electron');
 
-const DEFAULT_GPT_LINK = 'https://chatgpt.com/g/g-69bbaa14756481919a6f33be7a5ccb50-tach-nen-san-pham-fill-mat-canh-mat-goc';
-const DEFAULT_PROMPT = 'Tách nền sản phẩm, fill mất cảnh, mất góc. Giữ sản phẩm rõ nét, tự nhiên, sạch sẽ. Xuất ảnh chất lượng cao.';
+const DEFAULT_GPT_LINK = 'https://chatgpt.com/g/g-6a0ed5a8ac748191835929da90200f38-vtarch-translate-layout-fix';
 
 function getConfigPath() {
   return path.join(app.getPath('userData'), 'config.json');
@@ -18,9 +17,14 @@ function defaultConfig() {
     inputFolder: '',
     outputFolder: '',
     gptLink: DEFAULT_GPT_LINK,
-    promptText: DEFAULT_PROMPT,
+    commandTranslate: 'D',
+    commandGenerate: 'T',
     waitAfterUpload: 15000,
-    maxWaitResult: 180000
+    maxWaitTranslate: 180000,
+    maxWaitResult: 240000,
+    autoNewChat: true,
+    minBlocks: 1,
+    maxBlocks: 20
   };
 }
 
