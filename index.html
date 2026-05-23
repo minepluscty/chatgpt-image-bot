@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatGPT Image Bot</title>
+  <link rel="stylesheet" href="src/renderer/style.css" />
+</head>
+<body>
+  <main class="app">
+    <aside class="sidebar">
+      <h1>ChatGPT Image Bot</h1>
+      <p>Tạo và lưu ảnh theo thư mục bạn chọn.</p>
+      <div class="status">Trạng thái: <span id="statusText">Sẵn sàng</span></div>
+    </aside>
+
+    <section class="content">
+      <div class="card">
+        <h2>1. Chọn thư mục</h2>
+        <label>Thư mục ảnh nguồn</label>
+        <div class="row">
+          <input id="inputFolder" placeholder="Chọn thư mục ảnh nguồn" />
+          <button id="chooseInput">Chọn</button>
+          <button id="openInput">Mở</button>
+        </div>
+        <label>Thư mục lưu ảnh kết quả</label>
+        <div class="row">
+          <input id="outputFolder" placeholder="Chọn thư mục lưu ảnh" />
+          <button id="chooseOutput">Chọn</button>
+          <button id="openOutput">Mở</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>2. Cấu hình</h2>
+        <label>Link GPT</label>
+        <input id="gptLink" />
+        <label>Prompt</label>
+        <textarea id="promptText"></textarea>
+        <div class="grid2">
+          <div>
+            <label>Chờ upload ảnh (ms)</label>
+            <input id="waitAfterUpload" type="number" />
+          </div>
+          <div>
+            <label>Chờ kết quả tối đa (ms)</label>
+            <input id="maxWaitResult" type="number" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>3. Điều khiển</h2>
+        <div class="actions">
+          <button class="start" id="startBtn">Bắt đầu</button>
+          <button id="continueBtn">Tiếp tục chạy</button>
+          <button class="stop" id="stopBtn">Dừng</button>
+        </div>
+        <pre id="logBox"></pre>
+      </div>
+    </section>
+  </main>
+  <script src="src/renderer/app.js"></script>
+</body>
+</html>
