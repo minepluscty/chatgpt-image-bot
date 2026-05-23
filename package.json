@@ -1,0 +1,24 @@
+{
+  "name": "chatgpt-image-bot-ui",
+  "version": "1.0.0",
+  "description": "Tool tu dong gui anh vao Custom GPT va luu anh ket qua",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "setup": "npm install"
+  },
+  "dependencies": {
+    "electron": "^30.0.0",
+    "playwright": "^1.44.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.mineplus.chatgptimagebot",
+    "productName": "ChatGPT Image Bot",
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
