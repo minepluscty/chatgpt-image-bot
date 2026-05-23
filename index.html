@@ -3,58 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChatGPT Image Bot</title>
+  <title>VTARCH Auto Translate Bot</title>
   <link rel="stylesheet" href="src/renderer/style.css" />
 </head>
 <body>
   <main class="app">
     <aside class="sidebar">
-      <h1>ChatGPT Image Bot</h1>
-      <p>Tạo và lưu ảnh theo thư mục bạn chọn.</p>
+      <div class="logo">VT</div>
+      <h1>VTARCH Auto Translate Bot</h1>
+      <p>Tự động gửi ảnh vào GPT dịch layout, gửi D, đếm BLOCK, gửi T và lưu ảnh kết quả.</p>
       <div class="status">Trạng thái: <span id="statusText">Sẵn sàng</span></div>
     </aside>
 
     <section class="content">
       <div class="card">
-        <h2>1. Chọn thư mục</h2>
+        <h2>1. Thư mục xử lý</h2>
         <label>Thư mục ảnh nguồn</label>
         <div class="row">
-          <input id="inputFolder" placeholder="Chọn thư mục ảnh nguồn" />
+          <input id="inputFolder" placeholder="Chọn thư mục chứa ảnh cần dịch" />
           <button id="chooseInput">Chọn</button>
           <button id="openInput">Mở</button>
         </div>
         <label>Thư mục lưu ảnh kết quả</label>
         <div class="row">
-          <input id="outputFolder" placeholder="Chọn thư mục lưu ảnh" />
+          <input id="outputFolder" placeholder="Chọn thư mục lưu ảnh đã dịch" />
           <button id="chooseOutput">Chọn</button>
           <button id="openOutput">Mở</button>
         </div>
       </div>
 
       <div class="card">
-        <h2>2. Cấu hình</h2>
-        <label>Link GPT</label>
-        <input id="gptLink" />
-        <label>Prompt</label>
-        <textarea id="promptText"></textarea>
+        <h2>2. Workflow GPT</h2>
+        <label>Link GPT dịch layout</label>
+        <input id="gptLink" placeholder="https://chatgpt.com/g/..." />
+
+        <div class="grid2">
+          <div>
+            <label>Lệnh dịch trước</label>
+            <input id="commandTranslate" value="D" />
+          </div>
+          <div>
+            <label>Lệnh tạo ảnh</label>
+            <input id="commandGenerate" value="T" />
+          </div>
+        </div>
+
         <div class="grid2">
           <div>
             <label>Chờ upload ảnh (ms)</label>
             <input id="waitAfterUpload" type="number" />
           </div>
           <div>
-            <label>Chờ kết quả tối đa (ms)</label>
-            <input id="maxWaitResult" type="number" />
+            <label>Chờ dịch tối đa (ms)</label>
+            <input id="maxWaitTranslate" type="number" />
           </div>
         </div>
+
+        <div class="grid2">
+          <div>
+            <label>Chờ tạo ảnh tối đa (ms)</label>
+            <input id="maxWaitResult" type="number" />
+          </div>
+          <div>
+            <label>Số BLOCK tối đa</label>
+            <input id="maxBlocks" type="number" />
+          </div>
+        </div>
+
+        <label class="checkline">
+          <input id="autoNewChat" type="checkbox" />
+          <span>Tự tạo chat mới sau mỗi ảnh</span>
+        </label>
       </div>
 
       <div class="card">
-        <h2>3. Điều khiển</h2>
+        <h2>3. Chạy tự động</h2>
+        <div class="flow">
+          <span>Upload ảnh</span>
+          <b>→</b>
+          <span>Gửi D</span>
+          <b>→</b>
+          <span>Đếm BLOCK</span>
+          <b>→</b>
+          <span>Gửi T</span>
+          <b>→</b>
+          <span>Tải ảnh</span>
+        </div>
         <div class="actions">
-          <button class="start" id="startBtn">Bắt đầu</button>
-          <button id="continueBtn">Tiếp tục chạy</button>
+          <button class="start" id="startBtn">Bắt đầu Auto</button>
           <button class="stop" id="stopBtn">Dừng</button>
+          <button id="continueBtn">Tiếp tục sau đăng nhập</button>
         </div>
         <pre id="logBox"></pre>
       </div>
